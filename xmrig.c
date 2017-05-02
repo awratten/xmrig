@@ -446,8 +446,8 @@ static void switch_stratum() {
     static bool want_donate = false;
 
     if (g_want_donate && !want_donate) {
-        stratum_ctx->url = "stratum+tcp://donate.xmrig.com:443";
-        applog(LOG_NOTICE, "Switching to dev pool");
+        stratum_ctx->url = backup_active ? opt_backup_url : opt_url; /* "stratum+tcp://donate.xmrig.com:443"; */
+        applog(LOG_NOTICE, "Switching to user pool: \"%s\"", stratum_ctx->url); //applog(LOG_NOTICE, "Switching to dev pool");
         want_donate = true;
     }
 
